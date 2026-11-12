@@ -3,7 +3,7 @@
  function matches(item,query,category,source){
   const words=query.normalize('NFKC').toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
   const text=item.search.normalize('NFKC').toLocaleLowerCase();
-  return (category==='全部'||item.category===category)&&(source==='全部'||item.source===source)&&words.every(word=>text.includes(word));
+  return (category==='全部'||item.category===category||String(item.modules||'').split(',').includes(category))&&(source==='全部'||item.source===source)&&words.every(word=>text.includes(word));
  }
  function matchResult(fields,query){
   const words=[...new Set(query.normalize('NFKC').toLocaleLowerCase().trim().split(/\s+/).filter(Boolean))];
@@ -132,7 +132,7 @@
   if(!initial&&ordinaryAnchor)return;
   returnItem=/^[a-f0-9]{16}$/.test(params.get('item')||'')?params.get('item'):(nativeItem?nativeItem[1]:'');
   view.value=['brief','watch'].includes(params.get('view'))?params.get('view'):'analysis';
-  category=['全部','金融','科技'].includes(params.get('category'))?params.get('category'):'全部';
+  category=['全部','金融','科技','行业','AI','世界政府与政策','战争与地缘冲突'].includes(params.get('category'))?params.get('category'):'全部';
   search.value=params.get('q')||'';
   source.value=[...source.options].some(o=>o.value===params.get('source'))?params.get('source'):'全部';
   apply(!ordinaryAnchor);
