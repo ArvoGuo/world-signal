@@ -169,3 +169,16 @@ button{transition:none}
 :focus-visible{outline:3px solid #79541e;outline-offset:4px}
 main:focus{outline:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* Dated reading: headline and unique takeaway remain visible; evidence stays inline. */
+.date-event{margin:1rem 0;border-top:1px solid var(--line,#cbc6bc);padding:.65rem 0}
+.date-event>summary{cursor:pointer;min-height:44px;padding:.65rem .25rem;display:list-item}
+.date-event>summary strong,.date-event>summary span,.date-event>summary small{display:block;margin:.3rem 0}
+.date-event>summary strong{font-size:1.15rem;line-height:1.45}
+.date-event>summary span{font-size:1rem;line-height:1.65;font-weight:400}
+.date-event>summary small{font-weight:400;color:#526058}
+.date-event>summary:focus-visible{outline:3px solid #315b45;outline-offset:4px}
+.event-evidence{padding:.35rem .5rem 1rem}
+/* Date-only directory replaces the legacy six-column mobile navigation. */
+.top nav[aria-label="日期目录"]{display:flex;flex-wrap:wrap;gap:8px 16px;grid-template-columns:none}
+.top nav[aria-label="日期目录"] a{flex:0 0 auto;min-width:104px;min-height:44px;white-space:nowrap;padding:8px 10px;justify-content:center;font-variant-numeric:tabular-nums}
+@media(max-width:760px){.top nav[aria-label="日期目录"]{width:100%;gap:8px 16px}}
